@@ -5,6 +5,16 @@ const App = () => {
 
   const [status, setStatus] = useState('off');
 
+  const [time, setTime] = useState(0);
+  const [timer, setTimer] = useState(null);
+
+  let seconds = String(time % 60).padStart(2, '0');
+  let minutes = String(Math.floor(time / 60)).padStart(2, '0');
+
+  const formatTime = (time) => {
+
+  }
+
   return (
     <div>
         <h1>Protect your eyes</h1>
@@ -18,7 +28,7 @@ const App = () => {
         { status === 'rest' && (<img src="./images/rest.png" />)}
         { status !== 'off' && (
           <div className="timer">
-            18:23
+            { minutes }:{ seconds }
           </div>
         )}
         { status === 'off' && (<button className="btn">Start</button>)}
