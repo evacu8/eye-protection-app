@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 
 const App = () => {
@@ -21,6 +21,20 @@ const App = () => {
       setTime(time => time - 1);
     }, 1000));
   }
+
+  useEffect(() => {
+    if(status !== 'off'){
+      if (time === 0) {
+        if (status === 'work') {
+          setStatus('rest');
+          setTime(20);
+        } else {
+          setStatus('work');
+          setTime(1200);
+        }
+      }
+    }
+  }, [time]);
 
   return (
     <div>
