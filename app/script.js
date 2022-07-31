@@ -4,15 +4,22 @@ import { render } from 'react-dom';
 const App = () => {
 
   const [status, setStatus] = useState('off');
-
   const [time, setTime] = useState(0);
   const [timer, setTimer] = useState(null);
 
-  let seconds = String(time % 60).padStart(2, '0');
-  let minutes = String(Math.floor(time / 60)).padStart(2, '0');
-
+  
   const formatTime = (time) => {
+    let seconds = String(time % 60).padStart(2, '0');
+    let minutes = String(Math.floor(time / 60)).padStart(2, '0');
+    return(`${minutes}:${seconds}`);
+  }
 
+  const startTimer = () => {
+    setTime(1200);
+    setStatus('work');
+    setTimer(setInterval(() => {
+      setTime(time => time - 1);
+    }, 1000));
   }
 
   return (
@@ -28,10 +35,10 @@ const App = () => {
         { status === 'rest' && (<img src="./images/rest.png" />)}
         { status !== 'off' && (
           <div className="timer">
-            { minutes }:{ seconds }
+            { formatTime(time) }
           </div>
         )}
-        { status === 'off' && (<button className="btn">Start</button>)}
+        { status === 'off' && (<button className="btn" onClick={startTimer}>Start</button>)}
         { status !== 'off' && (<button className="btn">Stop</button>)}
         <button className="btn btn-close">X</button>
       </div>
