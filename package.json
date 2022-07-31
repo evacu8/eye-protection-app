@@ -1,0 +1,14 @@
+{
+  "name": "eye-protection-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:evacu8/eye-protection-app.git",
+  "author": "Krzysztof Potocki <kpotocki89@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "5.0.6"
+  },
+  "scripts": {
+    "start": "electron ./app/index.html"
+  }
+}
